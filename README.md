@@ -18,19 +18,19 @@ These tests were conducted as part of the master’s dissertation titled:
 
 ## 🧾 Repository Structure
 📂 Results Monolith/
-┣ 📸 Contains screenshots of performance test results for the monolithic architecture
+- ┣ 📸 Contains screenshots of performance test results for the monolithic architecture
 
 📂 Results Microservices/
-┣ 📸 Contains screenshots of performance test results for the microservices architecture
+- ┣ 📸 Contains screenshots of performance test results for the microservices architecture
 
 📄 monolith-performance.js
-┣ Grafana k6 performance test script for the monolithic application
+- ┣ Grafana k6 performance test script for the monolithic application
 
 📄 microservices-performance.js
-┣ Grafana k6 performance test script for the microservices application
+- ┣ Grafana k6 performance test script for the microservices application
 
 📄 README.md
-┣ This documentation file
+- ┣ This documentation file
 
 ---
 
