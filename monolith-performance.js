@@ -3,18 +3,18 @@ import { check, sleep } from 'k6';
 import { Trend, Counter } from 'k6/metrics';
 
 // Metricas personalizadas
-export const latency = new Trend('latency', true); // Latencia
-export const throughput = new Counter('throughput'); // Requisicoes processadas
-export const errors = new Counter('errors'); // Contagem de erros
+export const latency = new Trend('latency', true); 
+export const throughput = new Counter('throughput'); 
+export const errors = new Counter('errors');
 
 // Configuracao do teste
 export const options = {
   stages: [
-    { duration: '30s', target: 50 },  // baixa carga
-    { duration: '1m', target: 100 },  // carga media
-    { duration: '2m', target: 250 }, // alta carga
-    { duration: '4m', target: 550 }, // carga muito alta
-    { duration: '30s', target: 0 },   // final do teste
+    { duration: '30s', target: 50 },
+    { duration: '1m', target: 100 }, 
+    { duration: '2m', target: 250 },
+    { duration: '4m', target: 550 },
+    { duration: '30s', target: 0 },
   ],
 };
 
@@ -72,26 +72,15 @@ export default function () {
   const url = buildUrlGetPlayers();
   // const url = buildUrlGetUsers();
 
-  const headers = {
-    Authorization: AUTH_TOKEN,
-    'Content-Type': 'application/json',
-  };
-
-  // Realizar a requisicao
+  const headers = { Authorization: AUTH_TOKEN, 'Content-Type': 'application/json',};
   const res = http.get(url, { headers });
 
-  // Metricas
-  latency.add(res.timings.duration); // Adiciona a latencia
-  throughput.add(1); // Incrementa o throughput
+  latency.add(res.timings.duration); 
+  throughput.add(1); 
   if (res.status !== 200) {
-    errors.add(1); // Incrementa erros se o status nao for 200
+    errors.add(1); 
   }
 
-  // Verificacoes
-  check(res, {
-    'status e 200': (r) => r.status === 200,
-  });
-
-  // Simular tempo entre requisicoes
+  check(res, { 'status e 200': (r) => r.status === 200,});
   sleep(1);
 }
